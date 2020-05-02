@@ -5,10 +5,11 @@
 ## Installation
 
 Install `svcw` by running:
+
 ```sh
 go get github.com/Just-maple/svcw
 ```
-and ensuring that $GOPATH/bin is added to your $PATH.
+
 
 ## Usage example
 
@@ -16,9 +17,9 @@ If your application use `wire` or other `DI`、`IOC` design
 
 the service call relation would seems like a tree
 
-- A.DoSomething() may contain A.B.DoSomething()
-- B.DoSomething() may contain B.C.DoSomething()
-- C.DoSomething() may contain C.D.DoSomething()
+- `A.DoSomething()` may contain `A.B.DoSomething()`
+- `B.DoSomething()` may contain `B.C.DoSomething()` and `B.E.DoSomething()`
+- `C.DoSomething()` may contain `C.D.DoSomething()`
 
 ```go
 func (this A) DoSomething(ctx context.Context){ 
@@ -27,6 +28,7 @@ func (this A) DoSomething(ctx context.Context){
 
 func (this B) DoSomething(ctx context.Context){ 
     this.C.DoSomething(ctx)
+    this.E.DoSomething(ctx)
 }
 
 func (this C) DoSomething(ctx context.Context){ 
@@ -80,7 +82,7 @@ if err != nil {
 	panic(err)
 }
 ```
-when `svcw` get your application, it will analyse your service interface call relation
+when `svcw` get your application ptr, it will analyse your service interface call relation
 
 and it gens files `zitf.go` contain all structs that implement your service interface
 
