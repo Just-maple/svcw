@@ -41,8 +41,7 @@ func wrap(v reflect.Value) {
 			itf.Set(wrapV)
 		} else {
 			if v.CanAddr() {
-				fv := getUnexportedField(itf, v.UnsafeAddr()+v.Type().Field(i).Offset)
-				wrapV.Field(0).Set(fv)
+				wrapV.Field(0).Set(getUnexportedField(itf, v.UnsafeAddr()+v.Type().Field(i).Offset))
 				setUnexportedField(itf, v.UnsafeAddr()+v.Type().Field(i).Offset, wrapV)
 			}
 		}
@@ -56,7 +55,5 @@ func getUnexportedField(field reflect.Value, ptr uintptr) reflect.Value {
 }
 
 func setUnexportedField(field reflect.Value, ptr uintptr, value reflect.Value) {
-	reflect.NewAt(field.Type(), unsafe.Pointer(ptr)).
-		Elem().
-		Set(value)
+	reflect.NewAt(field.Type(), unsafe.Pointer(ptr)).Elem().Set(value)
 }
