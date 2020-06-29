@@ -1,4 +1,4 @@
-module github.com/Just-maple/svc-interruption
+module github.com/Just-maple/svcw
 
 go 1.13
 
