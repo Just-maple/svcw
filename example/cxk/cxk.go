@@ -3,7 +3,7 @@ package cxk
 import (
 	"context"
 
-	"github.com/Just-maple/svc-interruption/example/nba"
+	"github.com/Just-maple/svcw/example/nba"
 )
 
 type (

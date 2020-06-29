@@ -3,10 +3,10 @@ package main
 import (
 	"context"
 
-	svcw "github.com/Just-maple/svc-interruption"
-	"github.com/Just-maple/svc-interruption/example/cxk"
-	"github.com/Just-maple/svc-interruption/example/nba"
-	"github.com/Just-maple/svc-interruption/wrapflask"
+	"github.com/Just-maple/svcw"
+	"github.com/Just-maple/svcw/example/cxk"
+	"github.com/Just-maple/svcw/example/nba"
+	"github.com/Just-maple/svcw/wrapflask"
 )
 
 var ctx = context.Background()

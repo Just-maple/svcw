@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"runtime"
 
-	"github.com/Just-maple/svc-interruption/example/nba"
-	"github.com/Just-maple/svc-interruption/wrapflask"
+	"github.com/Just-maple/svcw/example/nba"
+	"github.com/Just-maple/svcw/wrapflask"
 )
 
 type _w_ChrisWu_ElectricVoice struct{ ElectricVoice }
