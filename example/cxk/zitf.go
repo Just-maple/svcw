@@ -23,6 +23,7 @@ func (this _w_ChrisWu_ElectricVoice) AutoTune(p0 context.Context) {
 	fmt.Printf("call:%v\n", name)
 	defer fmt.Printf("done:%v\n", name)
 
+	//func(context.Context)
 	this.ElectricVoice.AutoTune(p0)
 	return
 }
@@ -38,6 +39,7 @@ func (this _w_CXK_Singer) Sing(p0 context.Context) {
 	fmt.Printf("call:%v\n", name)
 	defer fmt.Printf("done:%v\n", name)
 
+	//func(context.Context)
 	this.Singer.Sing(p0)
 	return
 }
@@ -53,6 +55,7 @@ func (this _w_CXK_Dancer) Dance(p0 context.Context) {
 	fmt.Printf("call:%v\n", name)
 	defer fmt.Printf("done:%v\n", name)
 
+	//func(context.Context)
 	this.Dancer.Dance(p0)
 	return
 }
@@ -68,6 +71,7 @@ func (this _w_CXK_NBAStar) PlayBall(p0 context.Context) {
 	fmt.Printf("call:%v\n", name)
 	defer fmt.Printf("done:%v\n", name)
 
+	//func(context.Context)
 	this.Basketball.PlayBall(p0)
 	return
 }
@@ -83,6 +87,7 @@ func (this _w_CXK_Rapper) Rap(p0 context.Context) {
 	fmt.Printf("call:%v\n", name)
 	defer fmt.Printf("done:%v\n", name)
 
+	//func(context.Context)
 	this.Rapper.Rap(p0)
 	return
 }

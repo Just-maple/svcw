@@ -34,9 +34,11 @@ type (
 		pkg  string
 		data []string
 	}
+
+	parseType func(p reflect.Type)(todo string)
 )
 
-func Gen(i interface{}, todo string, recursive bool) (err error) {
+func Gen(i interface{}, todo parseType, recursive bool) (err error) {
 	typ := reflect.ValueOf(i)
 	var w = new(wrap)
 	err = w.gen(typ, todo, recursive)
@@ -50,7 +52,7 @@ func Gen(i interface{}, todo string, recursive bool) (err error) {
 	return
 }
 
-func (w *wrap) gen(typ reflect.Value, todo string, recursive bool) (err error) {
+func (w *wrap) gen(typ reflect.Value, todo parseType, recursive bool) (err error) {
 	for typ.Kind() == reflect.Ptr {
 		typ = typ.Elem()
 	}
@@ -134,7 +136,7 @@ func (w *wrap) gen(typ reflect.Value, todo string, recursive bool) (err error) {
 			f := pre + fmt.Sprintf("(%s)(%s){\n%s\n%s\n}\n",
 				strings.Join(c, ","),
 				strings.Join(o, ","),
-				todo,
+				todo(ft),
 				fmt.Sprintf("%s this.%s.%s(%s)\nreturn", re, typ.Type().Field(i).Type.Name(), m, strings.Join(paramCall, ",")),
 			)
 			funcs = append(funcs, f)

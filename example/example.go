@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"reflect"
 
 	"github.com/Just-maple/svcw"
 	"github.com/Just-maple/svcw/example/cxk"
@@ -29,7 +30,9 @@ func main() {
 	}
 
 	// inject codes to every interface call
-	err := svcw.Gen(cxkInstance, interruptionCode, true)
+	err := svcw.Gen(cxkInstance, func(p reflect.Type) (todo string) {
+		return interruptionCode + "\n//" + p.String()
+	}, true)
 	if err != nil {
 		panic(err)
 	}
